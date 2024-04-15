@@ -1,0 +1,1 @@
+Given the following start and end of a story, retrieve a possible reason that leads to the end.

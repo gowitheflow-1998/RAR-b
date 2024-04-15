@@ -1,0 +1,1 @@
+Given the following question and facts, retrieve the correct answer.

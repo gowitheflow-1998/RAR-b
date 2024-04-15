@@ -1,0 +1,1 @@
+Given the following spatial reasoning question, retrieve the right answer.
