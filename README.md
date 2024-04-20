@@ -8,11 +8,19 @@ Official repo of [*RAR-b: Reasoning as Retrieval Benchmark*](https://arxiv.org/a
 
 **[April 9, 2024]** We released the [RAR-b paper](https://arxiv.org/abs/2404.06347). 
 
+## Installation
+
+```
+git clone https://github.com/gowitheflow-1998/RAR-b.git
+cd RAR-b
+pip install e .
+```
+
 ## Demo
 
 ```python
 from beir.datasets.data_loader import GenericDataLoader
-from rarb.utils import initialize_retriever, evaluate_full_Grit
+from rarb.rarb_models import initialize_retriever, evaluate_full_Grit
 
 dataset = "ARC-Challenge"
 split = "test"
