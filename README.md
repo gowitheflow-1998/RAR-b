@@ -15,8 +15,33 @@ git clone https://github.com/gowitheflow-1998/RAR-b.git
 cd RAR-b
 pip install e .
 ```
+## Download Dataset
+
+All of our datasets for the full-dataset retrieval (full) setting are hosted on [Huggingface](https://huggingface.co/datasets/RAR-b). And all the datasets for the multiple-choice setting (mcr) are already in the repo along with git clone.
+
+Run the following script under the root folder to set up the datasets you want to evaluate with the format for RAR-b evaluation.
+
+For example, preparing for ARC-Challenge and PIQA:
+
+```python
+import os
+import subprocess
+
+for dataset_name in ["ARC-Challenge","piqa"]:
+    repo_url = f"https://huggingface.co/datasets/RAR-b/{dataset_name}"
+    local_path = f"full/{dataset_name}"
+
+    if not os.path.exists(local_path):
+        subprocess.run(["git","clone", repo_url, local_path], check=True)
+    else:
+        print("dataset exists locally")
+```
 
 ## Demo
+
+With the downloaded dataset, evaluate the model with our utils.
+
+Below is an example with Grit, evaluated for both without and with instructions:
 
 ```python
 from beir.datasets.data_loader import GenericDataLoader
