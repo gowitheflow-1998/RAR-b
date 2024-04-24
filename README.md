@@ -4,7 +4,7 @@
 Official repo of [*RAR-b: Reasoning as Retrieval Benchmark*](https://arxiv.org/abs/2404.06347)
 
 ## Updates
-**[April 15, 2024]** Uploaded all rar-b processed datasets and utils. Added an example below for evaluating with Grit. Still Updating scripts to run evaluation for all models. Stay tuned!
+**[April 15, 2024]** Uploaded all rar-b processed datasets and utils. Added a demo for evaluating with Grit. Still Updating scripts to run evaluation for all models. Stay tuned!
 
 **[April 9, 2024]** We released the [RAR-b paper](https://arxiv.org/abs/2404.06347). 
 
@@ -15,9 +15,9 @@ git clone https://github.com/gowitheflow-1998/RAR-b.git
 cd RAR-b
 pip install e .
 ```
-## Download Dataset
+## Download Datasets
 
-All of our datasets for the full-dataset retrieval (full) setting are hosted on [Huggingface](https://huggingface.co/datasets/RAR-b). And all the datasets for the multiple-choice setting (mcr) are already in the repo along with git clone.
+All of our datasets for the full-dataset retrieval (full) setting are hosted on [Huggingface](https://huggingface.co/RAR-b). And all the datasets for the multiple-choice setting (mcr) are already in the repo along with git clone.
 
 Run the following script under the root folder to set up the datasets you want to evaluate with the format for RAR-b evaluation.
 
