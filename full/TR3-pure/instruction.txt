@@ -1,1 +1,0 @@
-Given the following question, retrieve the correct answer.

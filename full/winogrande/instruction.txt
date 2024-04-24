@@ -1,1 +1,0 @@
-Given the following sentence, retrieve an appropriate answer to fill in the missing underscored part.

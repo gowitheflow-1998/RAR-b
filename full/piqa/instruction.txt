@@ -1,1 +1,0 @@
-Given the following goal, retrieve a possible solution.
