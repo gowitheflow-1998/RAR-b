@@ -46,6 +46,7 @@ Below is an example with Grit, evaluated for both without and with instructions:
 ```python
 from beir.datasets.data_loader import GenericDataLoader
 from rarb.rarb_models import initialize_retriever, evaluate_full_Grit
+from rarb import evaluate_full_Grit
 
 dataset = "ARC-Challenge"
 split = "test"
