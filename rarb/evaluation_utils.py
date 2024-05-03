@@ -89,7 +89,7 @@ def evaluate_full_instructor(retriever, queries, documents, qrels,
         for key in queries.keys():
           queries[key] = [instruction, queries[key]]
         for key in documents.keys():
-          documents[key]['title'] = doc_instruction
+          documents[key]['title'] = doc_instruction if doc_instruction is not None else ""
     results = retriever.retrieve(documents, queries)
 
     if do_rerank:
