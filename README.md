@@ -4,7 +4,7 @@
 Official repo of [*RAR-b: Reasoning as Retrieval Benchmark*](https://arxiv.org/abs/2404.06347)
 
 ## Updates
-**[April 15, 2024]** Uploaded all rar-b processed datasets and utils. Added a demo for evaluating with Grit. Still Updating scripts to run evaluation for all models. Stay tuned!
+**[April 15, 2024]** Uploaded all rar-b processed datasets and utils. Added a demo for evaluating with Grit.
 
 **[April 9, 2024]** We released the [RAR-b paper](https://arxiv.org/abs/2404.06347). 
 
@@ -36,10 +36,18 @@ for dataset_name in ["ARC-Challenge","piqa"]:
     else:
         print("dataset exists locally")
 ```
+## Evaluation
+
+Check out the `scripts` folder to reproduce evaluation results in RAR-b paper. For example, evaluate BGE models:
+
+Under the `root folder`, run:
+```
+python scripts/evaluate-BGE.py
+```
 
 ## Demo
 
-With the downloaded dataset, evaluate the model with our utils.
+Easily customize the evaluation of models using similar structure.
 
 Below is an example with Grit, evaluated for both without and with instructions:
 
