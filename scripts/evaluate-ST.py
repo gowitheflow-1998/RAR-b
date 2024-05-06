@@ -67,7 +67,8 @@ def evaluate_all_models(dataset, bge_version = 1.5,
                                 # doc_instruction = doc_instruction, split = split,
                                 #batch_size = 128))
     return results
-    
+
+# only needed for instructor
 doc_instruction_lookup = {     
     "alphanli": 'Represent the following text that leads to the end of a story',
     "hellaswag": 'Represent the following text to end an unfinished story',
@@ -76,13 +77,13 @@ doc_instruction_lookup = {
     "siqa": 'represent the sentence to answer a question',
     "ARC-Challenge": 'Represent the answer to a question',
     "quail": 'Represent the answer to a question given the context',
-    "TR1": "Represent the following month-year.",
-    "TR2-pure": "Represent this answer",
-    "TR2-fact": "Represent this answer",
-    "TR2-context": "Represent this answer",
-    "TR3-pure": "Represent this answer",
-    "TR3-fact": "Represent this answer",
-    "TR3-context": "Represent this answer",
+    "TempReason-l1": "Represent the following month-year.",
+    "TempReason-l2-pure": "Represent this answer",
+    "TempReason-l2-fact": "Represent this answer",
+    "TempReason-l2-context": "Represent this answer",
+    "TempReason-l3-pure": "Represent this answer",
+    "TempReason-l3-fact": "Represent this answer",
+    "TempReason-l3-context": "Represent this answer",
     "spartqa":"Represent the following answer to a spatial reasoning question",
     "TinyCode": "Represent the answer for a coding problem",
     "code-pooled": "Represent the answer for a coding problem",
