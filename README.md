@@ -13,7 +13,7 @@ Official repo of [*RAR-b: Reasoning as Retrieval Benchmark*](https://arxiv.org/a
 ```
 git clone https://github.com/gowitheflow-1998/RAR-b.git
 cd RAR-b
-pip install e .
+pip install -e .
 ```
 ## Download Datasets
 
