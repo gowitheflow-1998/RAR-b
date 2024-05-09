@@ -104,7 +104,6 @@ if __name__ == "__main__":
         split = 'test'
         result_path = f"results/{dataset}-{split}"
         if not os.path.exists(result_path):
-            # If it does not exist, create the directory and all required intermediate directories
             os.makedirs(result_path)
             
         doc_instruction = doc_instruction_lookup[dataset]

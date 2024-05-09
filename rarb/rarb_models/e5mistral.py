@@ -6,7 +6,7 @@ from tqdm import tqdm
 import numpy as np
 
 class E5Mistral:
-    def __init__(self, model_path: str = None, sep: str = " ", max_length = 8196, **kwargs):
+    def __init__(self, model_path: str = None, sep: str = " ", max_length = 8192, **kwargs):
         self.sep = sep
         self.tokenizer = AutoTokenizer.from_pretrained(model_path)
         self.q_model = AutoModel.from_pretrained(model_path, **kwargs)
@@ -18,9 +18,18 @@ class E5Mistral:
         encoded_embeds = []
         for start_idx in tqdm(range(0, len(queries), batch_size)):
             batch_texts = queries[start_idx: start_idx + batch_size]
-            batch_dict = self.tokenizer(batch_texts, max_length=self.max_length - 1, return_attention_mask=False, padding=False, truncation=True)
-            batch_dict['input_ids'] = [input_ids + [self.tokenizer.eos_token_id] for input_ids in batch_dict['input_ids']]
-            batch_dict = self.tokenizer.pad(batch_dict, padding=True, return_attention_mask=True, return_tensors='pt').to("cuda:0")
+
+            # the commented implementation adds another eos_token_id, which is implemented in the E5 Mistral repo, 
+            # perhaps for the sake of using max sequence length of 512 in evaluation,
+            # but it is not good if your max sequence length is set large and no sentences is truncated.
+            # results are worse using it on rar-b tasks. 
+            # Thus, I go with not adding eos and using a large sequence length to maximize its performance.
+
+            # batch_dict = self.tokenizer(batch_texts, max_length=self.max_length - 1, return_attention_mask=False, padding=False, truncation=True)
+            # batch_dict['input_ids'] = [input_ids + [self.tokenizer.eos_token_id] for input_ids in batch_dict['input_ids']]
+            # batch_dict = self.tokenizer.pad(batch_dict, padding=True, return_attention_mask=True, return_tensors='pt').to("cuda:0")
+
+            batch_dict = self.tokenizer(batch_texts, max_length=self.max_length, padding=True, truncation=True, return_tensors='pt').to("cuda:0")
             with torch.no_grad():
                 outputs = self.q_model(**batch_dict)
             embeddings = last_token_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
@@ -30,14 +39,23 @@ class E5Mistral:
         return np.concatenate(encoded_embeds, axis=0)
 
     def encode_corpus(self, corpus, batch_size:int=4, **kwargs):
-        # our current implementation put instruction into title in the pre-processing step
+        # 
         sentences = [doc["text"].strip() for doc in corpus]
         encoded_embeds = []
         for start_idx in tqdm(range(0, len(sentences), batch_size)):
             batch_texts = sentences[start_idx: start_idx + batch_size]
-            batch_dict = self.tokenizer(batch_texts, max_length=self.max_length - 1, return_attention_mask=False, padding=False, truncation=True)
-            batch_dict['input_ids'] = [input_ids + [self.tokenizer.eos_token_id] for input_ids in batch_dict['input_ids']]
-            batch_dict = self.tokenizer.pad(batch_dict, padding=True, return_attention_mask=True, return_tensors='pt').to("cuda:0")
+
+            # the commented implementation adds another eos_token_id, which is implemented in the E5 Mistral repo, 
+            # perhaps for the sake of using max sequence length of 512 in evaluation,
+            # but it is not good if your max sequence length is set large and no sentences is truncated.
+            # results are worse using it on rar-b tasks. 
+            # Thus, I go with not adding eos and using a large sequence length to maximize its performance.
+
+            # batch_dict = self.tokenizer(batch_texts, max_length=self.max_length - 1, return_attention_mask=False, padding=False, truncation=True)
+            # batch_dict['input_ids'] = [input_ids + [self.tokenizer.eos_token_id] for input_ids in batch_dict['input_ids']]
+            # batch_dict = self.tokenizer.pad(batch_dict, padding=True, return_attention_mask=True, return_tensors='pt').to("cuda:0")
+
+            batch_dict = self.tokenizer(batch_texts, max_length=self.max_length, padding=True, truncation=True, return_tensors='pt').to("cuda:0")
             with torch.no_grad():
                 outputs = self.doc_model(**batch_dict)
             embeddings = last_token_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
