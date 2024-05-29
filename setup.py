@@ -8,7 +8,7 @@ setup(
     ],
     author='gowitheflow-1998',
     author_email='chenghao.xiao [at] durham [dot] ac [dot] uk',
-    description='rarb: Reasoning as Retrieval Benchmark',
+    description='RAR-b: Reasoning as Retrieval Benchmark',
     license='MIT',
     url='http://github.com/gowitheflow-1998/RAR-b'
 )
