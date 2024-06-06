@@ -44,7 +44,7 @@ def evaluate_full(retriever, queries, documents, qrels,
                     model = 'rerank-english-v2.0',
                     query = q,
                     documents = docs)
-                cohere_index = [r.index for r in response]
+                cohere_index = [r.index for r in response.results]
                 reranked_doc_ids = [doc_ids[ind] for ind in cohere_index]
                 pseudo_sim_scores = [float(num) for num in np.linspace(1, 0, rerank_top_k)]
                 reranked_dict = {}
@@ -115,7 +115,7 @@ def evaluate_full_instructor(retriever, queries, documents, qrels,
                     model = 'rerank-english-v2.0',
                     query = q,
                     documents = docs)
-                cohere_index = [r.index for r in response]
+                cohere_index = [r.index for r in response.results]
                 reranked_doc_ids = [doc_ids[ind] for ind in cohere_index]
                 pseudo_sim_scores = [float(num) for num in np.linspace(1, 0, rerank_top_k)]
                 reranked_dict = {}
@@ -184,7 +184,7 @@ def evaluate_full_E5Mistral(retriever, queries, documents, qrels,
                     model = 'rerank-english-v2.0',
                     query = q,
                     documents = docs)
-                cohere_index = [r.index for r in response]
+                cohere_index = [r.index for r in response.results]
                 reranked_doc_ids = [doc_ids[ind] for ind in cohere_index]
                 pseudo_sim_scores = [float(num) for num in np.linspace(1, 0, rerank_top_k)]
                 reranked_dict = {}
@@ -255,7 +255,7 @@ def evaluate_full_Grit(retriever, queries, documents, qrels,
                     model = 'rerank-english-v2.0',
                     query = q,
                     documents = docs)
-                cohere_index = [r.index for r in response]
+                cohere_index = [r.index for r in response.results]
                 reranked_doc_ids = [doc_ids[ind] for ind in cohere_index]
                 pseudo_sim_scores = [float(num) for num in np.linspace(1, 0, rerank_top_k)]
                 reranked_dict = {}
