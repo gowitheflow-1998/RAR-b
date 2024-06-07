@@ -15,9 +15,12 @@ git clone https://github.com/gowitheflow-1998/RAR-b.git
 cd RAR-b
 pip install -e .
 ```
+
+For flexibility of different use cases, we don't put any library requirements in the repo. Based on the specific classes of models you want to evaluate, you might at least want to install some `pytorch`, `sentence-transformers`, `beir`, and if needed, `cohere` and `openai`.
+
 ## Download Datasets
 
-All of our datasets for the full-dataset retrieval (full) setting are hosted on [Huggingface](https://huggingface.co/RAR-b). And all the datasets for the multiple-choice setting (mcr) are already in the repo along with git clone (except CSTS, which we provide the code to reproduce in `mcr/create_csts.md`, detailed in `mcr/README.md`).
+All of our datasets for the full-dataset retrieval (full) setting are hosted on [Huggingface](https://huggingface.co/RAR-b). And all the datasets for the multiple-choice setting (mcr) are already in the repo along with git clone (except CSTS, which we provide the code to reproduce in `mcr/create_csts.py`, detailed in `mcr/README.md`).
 
 Run the following script under the root folder to set up the FULL setting datasets you want to evaluate with the format for RAR-b evaluation. Note that simply using huggingface ```load_dataset()``` won't work, and is just going to give you the qrels.
 
