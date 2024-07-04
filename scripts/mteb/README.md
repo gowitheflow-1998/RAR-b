@@ -1,6 +1,6 @@
 # Evaluate RAR-b with MTEB
 
-RAR-b is now available on the MTEB framework! Here, we provide simple demo regarding the way to flexibly define your `customized models`, and pass in needed arguments (especially complicated settings regarding `instructions`) to evaluate with MTEB.
+RAR-b is now available with the MTEB framework! Here, we provide a simple demo regarding the way to flexibly define your `customized models`, and pass in needed arguments (especially complicated settings regarding `instructions`) to evaluate with MTEB.
 
 Under the mteb directory, we define a simple [`InstructionSentenceTransformer`](https://github.com/gowitheflow-1998/RAR-b/blob/main/scripts/mteb/rarb_model/instruct_st.py) which can easily customize your query instructions, doc instructions. If not customized, the model will take in the instructions on MTEB defined by us (the original ones used in the RAR-b paper).
 
