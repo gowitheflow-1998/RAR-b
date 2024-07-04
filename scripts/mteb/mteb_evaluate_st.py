@@ -1,5 +1,5 @@
 from mteb.models.instructions import task_to_instruction
-from rarb_model.instruct_st import InstructionSentenceTransformer
+from mteb_rarb_models.instruct_st import InstructionSentenceTransformer
 import mteb
 
 task_names = ["ARCChallenge","AlphaNLI","HellaSwag","PIQA","Quail","SIQA","WinoGrande","SpartQA",
