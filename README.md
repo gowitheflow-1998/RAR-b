@@ -4,7 +4,7 @@
 Official repo of [*RAR-b: Reasoning as Retrieval Benchmark*](https://arxiv.org/abs/2404.06347)
 
 ## Updates
-**[July 2, 2024]**  New dataset/instruction utils; RAR-b has been integrated to [MTEB](https://github.com/embeddings-benchmark/mteb/tree/main), leaderboard is coming soon!
+**[July 2, 2024]**  New dataset/instruction utils; RAR-b has been integrated to [MTEB](https://github.com/embeddings-benchmark/mteb/tree/main) with [leaderboard](https://huggingface.co/spaces/mteb/leaderboard?task=retrieval&language=rar-b). Please submit your evaluation to RAR-b!
 
 **[April 15, 2024]** All RAR-b processed datasets, utils and evaluation scripts are open-sourced.
 
